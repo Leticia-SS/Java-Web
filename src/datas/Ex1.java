@@ -2,7 +2,12 @@ package datas;
 
 import java.sql.SQLOutput;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Ex1 {
     public static void main(String[] args){
@@ -42,6 +47,48 @@ public class Ex1 {
         System.out.println(LocalDate.of(2014, Month.JULY,25));
         System.out.println("=======================");
         System.out.println(Month.DECEMBER.firstMonthOfQuarter());
+
+        Locale pt = new Locale("pt");
+        System.out.println(Month.FEBRUARY.getDisplayName(TextStyle.FULL,pt));
+        System.out.println(Month.FEBRUARY.getDisplayName(TextStyle.SHORT,pt));
+        System.out.println(Month.FEBRUARY.getDisplayName(TextStyle.NARROW,pt));
+
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        String formatado = now.format(formatter);
+        System.out.println(formatado);
+
+        String data = "14/11/1998";
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate transformado = LocalDate.parse(data, formatter1);
+        System.out.println(transformado);
+
+        //================== API ANTIGA
+        Calendar instance = Calendar.getInstance();
+        instance.set(2014,Calendar.FEBRUARY, 30);
+        System.out.println(instance.toString());
+
+        //LocalDate.of(2014,Month.FEBRUARY,30); DATA INVALIDA
+        //LocalDate.now().atTime(25,0); HORA INVALIDA
+
+        System.out.println("==================");
+
+        LocalDate now1 = LocalDate.now();
+        LocalDate dataNascimento = LocalDate.of(1988,Month.NOVEMBER,19);
+        System.out.println(ChronoUnit.DAYS.between(dataNascimento,now1));
+        System.out.println(ChronoUnit.MONTHS.between(dataNascimento,now1));
+        System.out.println(ChronoUnit.YEARS.between(dataNascimento,now1));
+        System.out.println(ChronoUnit.DECADES.between(dataNascimento,now1));
+
+        System.out.println(ChronoUnit.YEARS.between(anoAntigo,now1));
+
+
+
+
+
+
+
+
 
     }
 }
