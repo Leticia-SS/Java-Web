@@ -1,5 +1,6 @@
 package java8;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -24,6 +25,15 @@ public class Tester {
             }
         };
         usuarios.forEach(consumer);
+
+        usuarios.forEach((Usuario u) -> System.out.println(u.getNome()));
+        Consumer<Usuario> consumer2 = u -> System.out.println(u.getNome());
+        usuarios.forEach((Usuario u) -> {
+            int pontos = u.getPontos();
+            System.out.println(pontos-10);
+        });
+
+        usuarios.forEach(( u) -> u.tornaModerador()); // Função dentro de função puxando o metodo
 
     }
 }
