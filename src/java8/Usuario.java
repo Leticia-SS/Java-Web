@@ -1,6 +1,6 @@
 package java8;
 
-public class Usuario {
+public class Usuario { // implements Comparable<Usuario> (não utilizado)
     private String nome;
     private int pontos;
     private boolean moderador;
@@ -27,4 +27,18 @@ public class Usuario {
         this.moderador = true;
     }
 
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", pontos=" + pontos +
+                ", moderador=" + moderador +
+                '}';
+    }
+
+//    @Override
+//    public int compareTo(Usuario o) {
+//        return 0;
+//    }  Não utilizado
 }
